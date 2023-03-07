@@ -1,2 +1,2 @@
-# exercicio-api
-Exercício Codeboost 
+# Exercício Codeboost
+Exercício utilizando a API Via Cep
