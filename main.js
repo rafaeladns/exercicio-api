@@ -15,13 +15,16 @@ console.log(msgErro);
 btnBuscarCep.addEventListener('click', () => {
     if(inputCep.value != "") {
         //Chamando a api
-        fetch(`https://viacep.com.br/ws/${inputCep.value}/json/`)
-        .then(response => response.json())
-        .then(json => {
-           inputBairro.value = json.bairro;
-           inputCepDado.value = json.cep;
-           inputLogradouro.value = json.logradouro;
-           inputEstado.value = json.localidade;
+        axios({
+            method: 'GET',
+            url: `https://viacep.com.br/ws/${inputCep.value}/json/`
+        })
+        .then(response => {
+            let data = response.data;
+           inputBairro.value = data.bairro;
+           inputCepDado.value = data.cep;
+           inputLogradouro.value = data.logradouro;
+           inputEstado.value = data.uf;
 
            areaDados.style.display = 'block';
            msgErro.style.display = 'none';
